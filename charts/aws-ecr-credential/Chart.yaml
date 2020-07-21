@@ -4,7 +4,7 @@ home: "https://github.com/woodjme/exp-helm-charts"
 description: This Chart seemlessly integrates Kubernetes with AWS ECR
 name: aws-ecr-credential
 maintainers:
-  - name: Jamie Wood
+  - name: woodjme
     email: me@jamiewood.io
 version: 1.0.0
 keywords:
