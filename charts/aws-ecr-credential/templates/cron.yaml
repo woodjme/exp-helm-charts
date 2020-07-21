@@ -53,14 +53,14 @@ spec:
 
               echo "DOCKER_REGISTRY_SERVER=$DOCKER_REGISTRY_SERVER"
               echo "DOCKER_USER=$DOCKER_USER"
-              echo "DOCKER_PASSWORD=$DOCKER_PASSWORD"
-
-              kubectl delete secret --namespace {{ .Values.targetNamespace }} aws-registry --ignore-not-found=true
-              kubectl create secret --namespace {{ .Values.targetNamespace }} docker-registry aws-registry \
-              --docker-server=$DOCKER_REGISTRY_SERVER \
-              --docker-username=$DOCKER_USER \
-              --docker-password=$DOCKER_PASSWORD \
-              --docker-email=no@email.local
-
+              echo "DOCKER_PASSWORD=$DOCKER_PASSWORD"a
+              {{ range .Values.targetNamespaces }}
+                kubectl delete secret --namespace {{ . }} aws-registry --ignore-not-found=true
+                kubectl create secret --namespace {{ . }} docker-registry aws-registry \
+                --docker-server=$DOCKER_REGISTRY_SERVER \
+                --docker-username=$DOCKER_USER \
+                --docker-password=$DOCKER_PASSWORD \
+                --docker-email=no@email.local
+              {{ end }}
               kubectl patch serviceaccount default -p '{"imagePullSecrets":[{"name":"aws-registry"}]}'
 
