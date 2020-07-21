@@ -1,4 +1,4 @@
-# Config file to ct lint
+# Config file for ct lint (GitHub Actions)
  all: true
  chart-dirs:
   - /workdir/charts
