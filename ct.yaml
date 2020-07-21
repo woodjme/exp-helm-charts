@@ -1,0 +1,4 @@
+# Config file to ct lint
+ all: true
+ chart-dirs:
+  - /workdir/charts
